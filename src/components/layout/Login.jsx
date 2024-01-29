@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useNavigate  } from "react-router-dom";
 
 function Login( { onSubmit } ) {
     const  [username, setUsername] = useState("");
+    const navigate = useNavigate ();
 
     
 
@@ -15,6 +17,10 @@ function Login( { onSubmit } ) {
         console.log("Le formulaire est soumis")
         onSubmit(username);
         setUsername("");
+
+        // username
+        navigate(`/orderpage/${username}`);
+        
     }
 
 
