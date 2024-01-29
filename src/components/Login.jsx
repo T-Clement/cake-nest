@@ -25,7 +25,14 @@ function Login( { onSubmit } ) {
         <section>
             <h2>Connectez-vous</h2>
             <form onSubmit={handleSubmit}>
-                <input type="text" name='username' value={username} placeholder='Entrez votre prénom...' onChange={handleChange}/>
+                <input 
+                    type="text" 
+                    name='username' 
+                    value={username} 
+                    placeholder='Entrez votre prénom...' 
+                    onChange={handleChange} 
+                    required 
+                />
                 <button type='submit'>Accédez à votre espace</button>
             </form>
 
