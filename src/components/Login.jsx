@@ -30,7 +30,8 @@ function Login( { onSubmit } ) {
                     name='username' 
                     value={username} 
                     placeholder='Entrez votre prénom...' 
-                    onChange={handleChange} 
+                    onChange={handleChange}
+                    autocomplete = "off" 
                     required 
                 />
                 <button type='submit'>Accédez à votre espace</button>
