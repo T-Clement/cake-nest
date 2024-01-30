@@ -3,21 +3,22 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import styled from "styled-components"
 // import { theme } from "../../../theme"
 import { theme } from "../../theme";
-
+import { UserContext } from "../../App";
+import { useContext } from "react";
 
 
 
 
 
 export default function Profile() {
-
-  const {username} = useParams();
+  const {user} = useContext(UserContext);
+  // const {username} = useParams();
   // const navigate = useNavigate ();
   return (
     <ProfileStyled>
       <div className="info">
         <p>
-          Salut <b>{username}</b>
+          Salut <b>{user}</b>
         </p>
         <Link to="/">
           <div className="description">

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { theme } from '../../theme'
-
+import { fakeMenu } from '../../data/fakeData/fakeMenu.js'
 
 const MainStyled = styled.main`
     flex: 1;
@@ -18,9 +18,10 @@ const MainStyled = styled.main`
 
 
 function Main() {
+    console.log(fakeMenu);
   return (
     <MainStyled>
-        C'est le Main
+        
     </MainStyled>
   )
 }

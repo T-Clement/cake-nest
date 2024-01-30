@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate  } from "react-router-dom";
 import styled from 'styled-components';
 import { theme } from '../../theme';
 import { IoPersonCircleOutline } from "react-icons/io5";
-
+import { UserContext } from '../../App';
 
 
 
@@ -77,7 +77,8 @@ const LoginStyled = styled.div`
 
 
 
-function Login( { onSubmit } ) {
+function Login( ) {
+    const {user, setUser } = useContext(UserContext);
     const  [username, setUsername] = useState("");
     const navigate = useNavigate ();
 
@@ -91,11 +92,15 @@ function Login( { onSubmit } ) {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Le formulaire est soumis")
-        onSubmit(username);
+
+        // use setUser comming from Context
+        setUser(username);
+
+
         setUsername("");
 
         // username
-        navigate(`/orderpage/${username}`);
+        navigate(`/orderpage`);
         
     }
 
