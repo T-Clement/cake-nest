@@ -1,6 +1,10 @@
 import React from 'react'
 import Navbar from './Navbar'
 import styled from 'styled-components'
+import { theme } from '../../theme'
+import Main from './Main'
+
+
 // import {  useNavigate } from 'react-router-dom';
 // 100 vh 
 // et
@@ -16,6 +20,7 @@ const OrderPageStyled = styled.div`
     height: 95vh;
     display: flex;
     width: 1400px;
+    flex-direction: column;
   }
 `
 

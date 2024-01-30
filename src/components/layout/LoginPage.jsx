@@ -3,6 +3,8 @@ import Login from './Login';
 import styled from 'styled-components';
 import {theme} from './../../theme/index.js';
 import Logo from './Logo.jsx';
+import tarts from '../../assets/images/tarts.jpg';
+
 
 // import tarts from '../../../src/assets/tarts.jpg'
 // import styled from "styled-components"
@@ -19,7 +21,7 @@ const LoginPageStyled = styled.div`
     background-image: 
         linear-gradient(rgba(0, 0, 0, 0.5), 
         rgba(0, 0, 0, 0.5)), 
-        url("../../src/assets/image/tarts.jpg");
+        url(${tarts});
 
     background-size: cover;
     background-position: center;
