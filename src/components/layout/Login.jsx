@@ -1,5 +1,83 @@
 import React, { useState } from 'react'
 import { useNavigate  } from "react-router-dom";
+import styled from 'styled-components';
+// impor
+import { theme } from '../../theme';
+import { IoPersonCircleOutline } from "react-icons/io5";
+// import { IoPersonCircleOutline } from "react-icons/io5";
+
+
+
+
+
+
+
+const LoginStyled = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    hr {
+        padding: 2px 0;
+        border: none;
+        background-color: ${theme.colors.primary_cake};
+        letter-spacing: 5px;
+    }
+    .username-field {
+        /* margin: 24px; */
+        padding: 12px;
+        padding-left: 60px;
+        width: 100%;
+        border-radius: ${theme.borderRadius.round};
+        &::placeholder {
+            color: ${theme.colors.greyMedium};
+        }
+    }
+
+
+    button, .username-field {
+        /* border: ${theme.borderRadius.round}; */
+    }
+
+
+    div {
+        position: relative;
+    }
+
+    .icon {
+        height: 1.5rem;
+        width: 1.5rem;
+        /* background-color: red; */
+        padding: 4px;
+        position: absolute;
+        box-sizing:border-box;
+        top:50%;
+        left:32px;
+        transform: translateY(-50%);
+    }
+
+    svg {
+        color:${theme.colors.greyMedium};
+    }
+
+
+    .btn {
+        width: 100%;
+        /* text-align: center; */
+        display: flex;
+        /* align-items: center; */
+        justify-content: center;
+        margin-top: 16px;
+        padding: 12px;
+        color: ${theme.colors.white};
+        background-color: ${theme.colors.primary};
+    }
+`
+
+
+
+
 
 function Login( { onSubmit } ) {
     const  [username, setUsername] = useState("");
@@ -25,27 +103,34 @@ function Login( { onSubmit } ) {
 
 
   return (
-    <div>
-        <h1>Bienvenue chez nous !</h1>
-
+    <LoginStyled>
+        <h1 className="ttl">Bienvenue chez nous !</h1>
+        <hr/>
         <section>
-            <h2>Connectez-vous</h2>
-            <form onSubmit={handleSubmit}>
-                <input 
-                    type="text" 
-                    name='username' 
-                    value={username} 
-                    placeholder='Entrez votre prénom...' 
-                    onChange={handleChange}
-                    autoComplete = "off" 
-                    required 
-                />
-                <button type='submit'>Accédez à votre espace</button>
+            <h2 className="ttl sub-ttl">Connectez-vous</h2>
+            <form onSubmit={ handleSubmit }>
+                <div>
+                    <input 
+                        type="text" 
+                        name='username' 
+                        value = {username} 
+                        placeholder='Entrez votre prénom' 
+                        onChange = { handleChange }
+                        autoComplete = "off" 
+                        className='form-element username-field'
+                        required 
+                    />
+                    <IoPersonCircleOutline className='icon'/>
+                    {/* <IoPersonCircleOutline /> */}
+                </div>
+                <button className='form-element btn' type='submit'>Mon espace</button>
             </form>
 
         </section>
-    </div>
+    </LoginStyled>
   )
 }
 
 export default Login
+
+

@@ -1,8 +1,6 @@
 import { useState } from 'react';
-import Login from './components/layout/Login';
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-// import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+// import Login from './components/layout/Login';
+import LoginPage from './components/layout/LoginPage';
 import {
   createBrowserRouter,
   RouterProvider, Routes, Route, Link, BrowserRouter
@@ -18,16 +16,12 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Login onSubmit = { setUsername } />} />
-        <Route path = "/orderpage/:username" element={<OrderPage />} />
+        <Route path='/' element={<LoginPage onSubmit = { setUsername } />} />
+        <Route path = "/orderpage/:username" element={<OrderPage resetUsername = { setUsername }/>} />
         <Route path = "/*" element={<Error404 />}/>
       </Routes>
     </BrowserRouter>
-    // <>
-
-    //   {/* <Login /> */}
-    //   {/* {username ? alert("Bonjour " + username) : ""} */}
-    // </>
+   
   )
 }
 
