@@ -1,25 +1,44 @@
 import React from 'react'
-import { useParams, useNavigate } from 'react-router-dom';
+import Navbar from './Navbar'
+import styled from 'styled-components'
+// import {  useNavigate } from 'react-router-dom';
+// 100 vh 
+// et
 
-function OrderPage({resetUsername}) {
+const OrderPageStyled = styled.div`
+  height: 100vh;
+  background: ${theme.colors.primary};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  const {username} = useParams();
-  const navigate = useNavigate ();
-
-  const handleClick = (e) => {
-    console.log("C'est cliqué")
-    resetUsername("");
-    navigate("/");
+  .container {
+    height: 95vh;
+    display: flex;
+    width: 1400px;
   }
+`
+
+
+function OrderPage() {
+
+  
+
+  // const handleClick = (e) => {
+  //   console.log("C'est cliqué")
+  //   resetUsername("");
+  //   navigate("/");
+  // }
 
 
 
   return (
-    <div>
-        <p>Bravo {username}, vous êtes connecté !!!</p>
-        <button onClick={handleClick}>Se déconnecter</button>
-        
-    </div>
+    <OrderPageStyled>
+      <div className='container'>
+        <Navbar />
+        <Main />
+      </div>        
+    </OrderPageStyled>
   )
 }
 

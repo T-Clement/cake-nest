@@ -19,7 +19,7 @@ const LoginPageStyled = styled.div`
     background-image: 
         linear-gradient(rgba(0, 0, 0, 0.5), 
         rgba(0, 0, 0, 0.5)), 
-        url("../../src/assets/tarts.jpg");
+        url("../../src/assets/image/tarts.jpg");
 
     background-size: cover;
     background-position: center;

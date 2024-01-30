@@ -28,7 +28,7 @@ function Logo() {
   return (
     <LogoStyled>
         <span>Cake</span>
-        <img src="../../src/assets/cupcake.png" alt="logo cake nest" />
+        <img src="../../src/assets/image/cupcake.png" alt="logo cake nest" />
         <span>Nest</span>
     </LogoStyled>
   )
