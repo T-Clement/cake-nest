@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate  } from "react-router-dom";
 import styled from 'styled-components';
-// impor
 import { theme } from '../../theme';
 import { IoPersonCircleOutline } from "react-icons/io5";
-// import { IoPersonCircleOutline } from "react-icons/io5";
+
 
 
 
@@ -25,7 +24,6 @@ const LoginStyled = styled.div`
         letter-spacing: 5px;
     }
     .username-field {
-        /* margin: 24px; */
         padding: 12px;
         padding-left: 60px;
         width: 100%;

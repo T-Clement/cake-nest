@@ -1,7 +1,7 @@
 import React from 'react'
-import {theme} from './../../theme/index.js';
+import { theme } from './../../theme/index.js';
 import styled from 'styled-components';
-import cupcake from '../../assets/images/cupcake.png';
+import Cupcake from '../../assets/images/cupcake.png';
 
 
 const LogoStyled = styled.div`
@@ -26,9 +26,10 @@ function Logo() {
 
     
   return (
-    <LogoStyled>
+    <LogoStyled onClick={() => window.location.reload()}>
+        
         <span>Cake</span>
-        <img src={cupcake} alt="logo cake nest" />
+        <img src={Cupcake} alt="logo cake nest" />
         <span>Nest</span>
     </LogoStyled>
   )

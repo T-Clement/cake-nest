@@ -5,9 +5,6 @@ import { theme } from '../../theme'
 import Main from './Main'
 
 
-// import {  useNavigate } from 'react-router-dom';
-// 100 vh 
-// et
 
 const OrderPageStyled = styled.div`
   height: 100vh;
@@ -21,22 +18,15 @@ const OrderPageStyled = styled.div`
     display: flex;
     width: 1400px;
     flex-direction: column;
+    margin: 1em;
   }
+
+  
 `
 
 
 function OrderPage() {
-
-  
-
-  // const handleClick = (e) => {
-  //   console.log("C'est cliqué")
-  //   resetUsername("");
-  //   navigate("/");
-  // }
-
-
-
+// voir Outlet
   return (
     <OrderPageStyled>
       <div className='container'>
