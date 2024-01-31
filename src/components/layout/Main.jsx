@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { theme } from '../../theme'
 import { fakeMenu } from '../../data/fakeData/fakeMenu.js'
 import { formatPrice } from '../../utils/maths.js'
-// import {  }
+import AdminTabs from './AdminTabs.jsx'
 
 const MainStyled = styled.main`
     flex: 1;
@@ -55,7 +55,7 @@ const DetailsStyled = styled.div`
 
   .btn {
     background-color: ${theme.colors.primary};
-    padding: 16px 42px;
+    padding: 16px 32px;
     border-radius: ${theme.borderRadius.round};
     border: none;
     color: ${theme.colors.white};
@@ -85,6 +85,7 @@ function Main() {
             )} 
 
         </GridListStyled>
+        {/* <AdminTabs /> */}
     </MainStyled>
   )
 }

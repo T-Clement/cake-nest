@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './Navbar'
 import styled from 'styled-components'
 import { theme } from '../../theme'
@@ -27,11 +27,14 @@ const OrderPageStyled = styled.div`
 
 function OrderPage() {
 // voir Outlet
+
+  const [isAdmin, setIsAdmin] = useState(false);
+
   return (
     <OrderPageStyled>
       <div className='container'>
-        <Navbar />
-        <Main />
+        <Navbar isAdmin={ isAdmin } setIsAdmin={ setIsAdmin }/>
+        <Main isAdmin = {isAdmin} />
       </div>        
     </OrderPageStyled>
   )
