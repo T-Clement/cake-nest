@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, createContext } from 'react';
 // import Login from './components/layout/Login';
 import LoginPage from './components/layout/LoginPage';
 import {
@@ -8,20 +8,28 @@ import {
 import OrderPage from './components/layout/OrderPage';
 import Error404 from './components/layout/Error404';
 
+export const UserContext = createContext(null);
+// update
 
 function App() {
-  const [username, setUsername] = useState(null);
+
+  const [user, setUser] = useState(null);
+  // if(user) {
+  //   useEffect(() => {
+
+  //   })
+  // }
 
   return (
-
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<LoginPage onSubmit = { setUsername } />} />
-        <Route path = "/orderpage/:username" element={<OrderPage resetUsername = { setUsername }/>} />
-        <Route path = "/*" element={<Error404 />}/>
-      </Routes>
-    </BrowserRouter>
-   
+    <UserContext.Provider value = {{ user, setUser }}> 
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<LoginPage />} />
+          <Route path = "/orderpage" element={<OrderPage />} />
+          <Route path = "/*" element={<Error404 />}/>
+        </Routes>
+      </BrowserRouter>
+    </UserContext.Provider>
   )
 }
 
