@@ -1,3 +1,5 @@
+import CupcakeShopItem from "../../assets/images/cupcake-item.png"
+
 export const fakeSmallMenu = [ // pour tests
   {
     id: 1,
@@ -22,7 +24,7 @@ export const fakeSmallMenu = [ // pour tests
 export const fakeMenu = [
   {
     id: 1,
-    imageSource: "../../src/assets/images/cupcake-item.png",
+    imageSource: CupcakeShopItem,
     title: "BerryJoy",
     price: 3.598,
     quantity: 0,
@@ -31,7 +33,7 @@ export const fakeMenu = [
   },
   {
     id: 2,
-    imageSource: "../../src/assets/images/cupcake-item.png",
+    imageSource: CupcakeShopItem,
     title: "MintCharm",
     price: 5.4985,
     quantity: 0,
@@ -40,7 +42,7 @@ export const fakeMenu = [
   },
   {
     id: 3,
-    imageSource: "../../src/assets/images/cupcake-item.png",
+    imageSource: CupcakeShopItem,
     title: "FrostGlo",
     price: 8.367,
     quantity: 0,
@@ -49,7 +51,7 @@ export const fakeMenu = [
   },
   {
     id: 4,
-    imageSource: "../../src/assets/images/cupcake-item.png",
+    imageSource: CupcakeShopItem,
     title: "LushCup",
     price: 6.568,
     quantity: 0,
@@ -58,7 +60,7 @@ export const fakeMenu = [
   },
   {
     id: 5,
-    imageSource: "../../src/assets/images/cupcake-item.png",
+    imageSource: CupcakeShopItem,
     title: "VelvetCup",
     price: 5.487,
     quantity: 0,
@@ -67,7 +69,7 @@ export const fakeMenu = [
   },
   {
     id: 6,
-    imageSource: "../../src/assets/images/cupcake-item.png",
+    imageSource: CupcakeShopItem,
     title: "ZestyFun",
     price: 7.156,
     quantity: 0,
@@ -76,7 +78,7 @@ export const fakeMenu = [
   },
   {
     id: 7,
-    imageSource: "../../src/assets/images/cupcake-item.png",
+    imageSource: CupcakeShopItem,
     title: "BlissZu",
     price: 7.5,
     quantity: 0,
@@ -85,7 +87,7 @@ export const fakeMenu = [
   },
   {
     id: 8,
-    imageSource: "../../src/assets/images/cupcake-item.png",
+    imageSource: CupcakeShopItem,
     title: "ZingCup",
     price: 6.6,
     quantity: 0,
@@ -94,7 +96,7 @@ export const fakeMenu = [
   },
   {
     id: 9,
-    imageSource: "../../src/assets/images/cupcake-item.png",
+    imageSource: CupcakeShopItem,
     title: "FrostJoy",
     price: 5.7,
     quantity: 0,
@@ -103,7 +105,7 @@ export const fakeMenu = [
   },
   {
     id: 10,
-    imageSource: "../../src/assets/images/cupcake-item.png",
+    imageSource: CupcakeShopItem,
     title: "CocoZest",
     price: 4.7,
     quantity: 0,
