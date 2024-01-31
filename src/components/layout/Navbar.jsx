@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
 import Logo from './Logo';
-import Profile from './Profile';
+// import Profile from './Profile';
 import { theme } from '../../theme';
+import RightSide from './RightSide';
+// import ToggleAdmin from './ToggleAdmin';
 
 const NavbarStyled = styled.nav`
     display: flex;
@@ -20,26 +22,18 @@ function LeftSide ({children}) {
         </>
     )
 }
-function RightSide ({children}) {
-    return (
-        <>
-            {children}
-        </>
-    )
-}
 
 
 
 
-function Navbar() {
+
+function Navbar({isAdmin, setIsAdmin}) {
   return (
     <NavbarStyled>
-        {/* <LeftSide> */}
+        <LeftSide>
             <Logo />
-        {/* </LeftSide> */}
-        {/* <RightSide> */}
-            <Profile />
-        {/* </RightSide> */}
+        </LeftSide>
+        <RightSide isAdmin={ isAdmin } setIsAdmin={ setIsAdmin } />
     </NavbarStyled>
         
   )
