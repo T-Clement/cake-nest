@@ -40,10 +40,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../theme';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ToggleAdmin({ isAdmin, setIsAdmin }) {
     const handleToggle = () => {
+        if(!isAdmin) {
+            toast.info('🧁 Vous êtes passés administrateur!', {
+                position: "bottom-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });    
+        }
         setIsAdmin(!isAdmin);
+            
     };
 
     const SwitchContainer = styled.div`
@@ -80,7 +95,7 @@ function ToggleAdmin({ isAdmin, setIsAdmin }) {
             <Slider onClick={handleToggle}>
                 <SliderButton />
             </Slider>
-            <label>{isAdmin ? 'Admin' : 'Utilisateur'}</label>
+            <label>{isAdmin ? 'Admin' : 'Passer Admin'}</label>
         </SwitchContainer>
     );
 }
