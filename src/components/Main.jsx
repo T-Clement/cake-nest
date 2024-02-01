@@ -6,7 +6,8 @@ import { formatPrice } from '../utils/maths.js'
 import AdminPannel from './admin/AdminPannel.jsx'
 
 import { TiDelete } from "react-icons/ti";
-
+import ImageMissing from "./../assets/images/no-image.jpg";
+ 
 const MainStyled = styled.main`
     flex: 1;
     box-shadow: inset gray 0px 0px 60px -12px; 
@@ -109,6 +110,14 @@ function Main({ isAdmin }) {
         setMenu(menuCopy);
     }
 
+
+    const handleImgError = (e) => {
+        e.target.onerror = "";
+        e.target.src = ImageMissing;
+    }
+
+
+
     return (
     <MainStyled>
         <GridListStyled>
@@ -116,7 +125,7 @@ function Main({ isAdmin }) {
             <li key={ item.id }>
                 
                     <ArticleStyled>
-                        <img src={item.imageSource} alt="Photo de Cupcake" /> {/*use onerror / onError if image not found to display another img */}
+                        <img src={item.imageSource} onError={handleImgError} alt="Photo de Cupcake" /> {/*use onerror / onError if image not found to display another img */}
 
                         {isAdmin ?<button id = {item.id} className='delete-btn' onClick={() => handleDelete(item.id)}><TiDelete className="icon"/></button> : ""}
 

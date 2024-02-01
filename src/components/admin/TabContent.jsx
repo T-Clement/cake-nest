@@ -112,6 +112,7 @@ function TabContent({ content, isShown , AddItemToMenu }) {
 
   // to handle multiple form field in one state
   const [formValues, setFormValues] = useState({
+    id: Date.now(),
     name: "",
     url: "",
     price: ""
@@ -126,7 +127,14 @@ function TabContent({ content, isShown , AddItemToMenu }) {
   const handleSubmit = (e) => {
    e.preventDefault(); 
   //  console.log(formValues);
-   AddItemToMenu(formValues);   
+   AddItemToMenu(formValues);  
+   // reset all values
+   setFormValues({
+    id: Date.now(),
+    name: "",
+    url: "",
+    price: ""
+  }) 
    // let 
   }
 
