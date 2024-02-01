@@ -67,8 +67,9 @@ const DetailsStyled = styled.div`
 
 function Main({ isAdmin }) {
     // console.log(fakeMenu);
-    const [adminState, setAdminState] = useState({action : "add", content :[]});
-  return (
+    const [adminState, setAdminState] = useState({action : "add", content: {name: "", url: "", price: ""}}); // initialize when first toggle to admin mode to add tab
+    const [isShown, setIsShown] = useState(true);
+    return (
     <MainStyled>
         <GridListStyled>
             {fakeMenu.map(item => (
@@ -87,7 +88,12 @@ function Main({ isAdmin }) {
             )} 
 
         </GridListStyled>
-        {isAdmin ? <AdminPannel adminState = { adminState } setAdminState = { setAdminState } /> : "" }
+        {isAdmin ? <AdminPannel 
+            adminState = { adminState } setAdminState = { setAdminState } 
+            isShown = { isShown }  setIsShown = { setIsShown }
+            /> 
+        : 
+            "" }
         {/* div invisible qui fait la hauteur du panneau d'admin, qui est derrière le panneau admin
         rendu conditionnel && */}
     </MainStyled>

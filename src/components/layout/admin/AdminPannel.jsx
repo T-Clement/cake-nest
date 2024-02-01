@@ -16,9 +16,9 @@ const AdminPannelStyled = styled.div`
 
 
 
-function AdminPannel({ adminState, setAdminState }) {
+function AdminPannel({ adminState, setAdminState, isShown, setIsShown }) {
   console.log("Le panneau Admin est rendu");
-  const [isShown, setIsShown] = useState(true);
+  // const [isShown, setIsShown] = useState(true);
   // const [tabSelected, setTabSelected] = useState(
   //   !tabSelected ?
   //   {

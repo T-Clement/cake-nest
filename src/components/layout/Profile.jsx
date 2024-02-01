@@ -7,9 +7,6 @@ import { UserContext } from "../../App";
 import { useContext } from "react";
 
 
-
-
-
 export default function Profile() {
   const {user} = useContext(UserContext);
   // const {username} = useParams();
