@@ -5,6 +5,8 @@ import { fakeMenu } from '../utils/data/fakeMenu.js'
 import { formatPrice } from '../utils/maths.js'
 import AdminPannel from './admin/AdminPannel.jsx'
 
+import { TiDelete } from "react-icons/ti";
+
 const MainStyled = styled.main`
     flex: 1;
     box-shadow: inset gray 0px 0px 60px -12px; 
@@ -31,6 +33,7 @@ const GridListStyled = styled.ul`
 
 
 const ArticleStyled = styled.article`
+    position: relative;
     box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
     border-radius: ${theme.borderRadius.extraRound};
     padding: 32px 40px;
@@ -41,6 +44,28 @@ const ArticleStyled = styled.article`
 
     h4 {
         font-family: "Pacifico";
+    }
+
+    .delete-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background-color: transparent;
+        /* color: ${theme.colors.white}; */
+        /* border-radius: ${theme.borderRadius.circle}; */
+        border: none;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+    }
+    
+    svg {
+        /* background-color: ${theme.colors.white};  */
+        color: ${theme.colors.primary};
+        width: ${theme.fonts.size.P3};
+        height: auto;
+        border-radius: ${theme.borderRadius.circle};
+        
     }
 `;
 
@@ -69,6 +94,13 @@ function Main({ isAdmin }) {
     // console.log(fakeMenu);
     const [adminState, setAdminState] = useState({action : "add", content: {name: "", url: "", price: ""}}); // initialize when first toggle to admin mode to add tab
     const [isShown, setIsShown] = useState(true);
+
+
+    const handleDelete = (e) => {
+        console.log(e.target.id);
+    }
+
+
     return (
     <MainStyled>
         <GridListStyled>
@@ -77,6 +109,9 @@ function Main({ isAdmin }) {
                 
                     <ArticleStyled>
                         <img src={item.imageSource} alt="Photo de Cupcake" />
+
+                        {isAdmin ?<button id = {item.id} className='delete-btn' onClick={handleDelete}><TiDelete className="icon"/></button> : ""}
+
                         <h4>{item.title}</h4>
                         <DetailsStyled>
                             <p className='price'>{formatPrice(item.price)}</p>

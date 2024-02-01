@@ -33,7 +33,16 @@ function TabContent({ content, isShown }) {
         {/* <p>TabContent : {content.action}</p> */}
         <img src="" alt="Aucune image" />
         <form action="">
-          <input type='text' placeholder='Nom du produit' value="" />
+          <div>
+            <input type='text' name="name" placeholder='Nom du produit' value="" />
+          </div>
+          <div>
+            <input type="text" name="url" placeholder="Lien URL d'une image (ex:https://la-photo-de-mon-produit.png)"/>
+          </div>
+          <div>
+            <input type="number" name="price" placeholder="Prix"/>
+          </div>
+          <button className='btn-submit' type='submit'>Ajouter un nouveau produit</button>
         </form>
     </TabContentStyled>
   )

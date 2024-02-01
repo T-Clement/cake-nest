@@ -1,4 +1,4 @@
-import CupcakeShopItem from "../../assets/images/cupcake-item.png"
+import CupcakeShopItem from "../../assets/images/cupcake-item.png";
 
 export const fakeSmallMenu = [ // pour tests
   {
