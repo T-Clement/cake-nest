@@ -88,29 +88,37 @@ const DetailsStyled = styled.div`
   }
 `;
 
-
+// --------------------------------------------
+// --------------------------------------------
 
 function Main({ isAdmin }) {
     // console.log(fakeMenu);
     const [adminState, setAdminState] = useState({action : "add", content: {name: "", url: "", price: ""}}); // initialize when first toggle to admin mode to add tab
     const [isShown, setIsShown] = useState(true);
+    const [menu, setMenu] = useState(fakeMenu)
 
-
-    const handleDelete = (e) => {
-        console.log(e.target.id);
+    const handleDelete = (id) => {
+        const menuCopy = menu.filter((item) => id != item.id);
+        setMenu(menuCopy);
     }
 
+
+    const AddItemToMenu = (newItemMenu) => {
+        const menuCopy = [...menu, newItemMenu];
+        // menuCopy.push(newItemMenu);
+        setMenu(menuCopy);
+    }
 
     return (
     <MainStyled>
         <GridListStyled>
-            {fakeMenu.map(item => (
+            {menu.map((item) => (
             <li key={ item.id }>
                 
                     <ArticleStyled>
-                        <img src={item.imageSource} alt="Photo de Cupcake" />
+                        <img src={item.imageSource} alt="Photo de Cupcake" /> {/*use onerror / onError if image not found to display another img */}
 
-                        {isAdmin ?<button id = {item.id} className='delete-btn' onClick={handleDelete}><TiDelete className="icon"/></button> : ""}
+                        {isAdmin ?<button id = {item.id} className='delete-btn' onClick={() => handleDelete(item.id)}><TiDelete className="icon"/></button> : ""}
 
                         <h4>{item.title}</h4>
                         <DetailsStyled>
@@ -126,6 +134,8 @@ function Main({ isAdmin }) {
         {isAdmin ? <AdminPannel 
             adminState = { adminState } setAdminState = { setAdminState } 
             isShown = { isShown }  setIsShown = { setIsShown }
+            AddItemToMenu = { AddItemToMenu }
+            
             /> 
         : 
             "" }

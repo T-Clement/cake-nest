@@ -7,16 +7,14 @@ import styled from 'styled-components';
 const AdminPannelStyled = styled.div`
   
   position: sticky;
- 
   bottom: 0;
- 
 `;
 
 
 
 
 
-function AdminPannel({ adminState, setAdminState, isShown, setIsShown }) {
+function AdminPannel({ adminState, setAdminState, isShown, setIsShown, AddItemToMenu }) {
   // console.log("Le panneau Admin est rendu");
 
   return (
@@ -25,7 +23,7 @@ function AdminPannel({ adminState, setAdminState, isShown, setIsShown }) {
         isShown ={ isShown } setIsShown = { setIsShown } 
         tabSelected = { adminState } setTabSelected = { setAdminState }
         />
-        <TabContent content = { adminState }  isShown = { isShown }/>
+        <TabContent content = { adminState }  isShown = { isShown } AddItemToMenu = { AddItemToMenu } />
     </AdminPannelStyled>
   )
 }
