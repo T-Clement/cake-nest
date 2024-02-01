@@ -2,8 +2,8 @@ import { BsPersonCircle } from "react-icons/bs"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import styled from "styled-components"
 // import { theme } from "../../../theme"
-import { theme } from "../../theme";
-import { UserContext } from "../../App";
+import { theme } from "../utils/theme/index";
+import { UserContext } from "../App";
 import { useContext } from "react";
 
 

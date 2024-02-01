@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { theme } from '../../../theme/index.js'
+import { theme } from '../../utils/theme/index'
 
 
 
@@ -30,7 +30,11 @@ const TabContentStyled = styled(({ isShown, ...rest }) => <div {...rest} />).att
 function TabContent({ content, isShown }) {
   return (
     <TabContentStyled isShown = { isShown }>
-        <p>TabContent : {content.action}</p>
+        {/* <p>TabContent : {content.action}</p> */}
+        <img src="" alt="Aucune image" />
+        <form action="">
+          <input type='text' placeholder='Nom du produit' value="" />
+        </form>
     </TabContentStyled>
   )
 }

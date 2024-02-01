@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
 import Logo from './Logo';
-// import Profile from './Profile';
-import { theme } from '../../theme';
+import { theme } from '../utils/theme/index';
 import RightSide from './RightSide';
-// import ToggleAdmin from './ToggleAdmin';
 
 const NavbarStyled = styled.nav`
     display: flex;

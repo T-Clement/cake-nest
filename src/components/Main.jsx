@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { theme } from '../../theme'
-import { fakeMenu } from '../../data/fakeData/fakeMenu.js'
-import { formatPrice } from '../../utils/maths.js'
+import { theme } from '../utils/theme/index.js'
+import { fakeMenu } from '../utils/data/fakeMenu.js'
+import { formatPrice } from '../utils/maths.js'
 import AdminPannel from './admin/AdminPannel.jsx'
 
 const MainStyled = styled.main`
