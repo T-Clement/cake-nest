@@ -54,6 +54,7 @@ function AdminTabs({isShown, setIsShown, setTabSelected, tabSelected}) {
             console.log(e.target, e.target.id);
             if(e.target.id !== "show") {
                 setTabSelected({action: e.target.id});
+                setIsShown(true); // open panel bt default when click on btn
             }
             
             if(e.target.id === "show") setIsShown(!isShown);

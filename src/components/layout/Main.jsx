@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { theme } from '../../theme'
 import { fakeMenu } from '../../data/fakeData/fakeMenu.js'
@@ -67,6 +67,7 @@ const DetailsStyled = styled.div`
 
 function Main({ isAdmin }) {
     // console.log(fakeMenu);
+    const [adminState, setAdminState] = useState({action : "add", content :[]});
   return (
     <MainStyled>
         <GridListStyled>
@@ -86,7 +87,7 @@ function Main({ isAdmin }) {
             )} 
 
         </GridListStyled>
-        {isAdmin ? <AdminPannel /> : "" }
+        {isAdmin ? <AdminPannel adminState = { adminState } setAdminState = { setAdminState } /> : "" }
         {/* div invisible qui fait la hauteur du panneau d'admin, qui est derrière le panneau admin
         rendu conditionnel && */}
     </MainStyled>
