@@ -10,6 +10,11 @@ const AdminTabsStyled = styled.div`
     margin-left: 46px;
     display: flex;
     
+
+    .tab-selected {
+        background-color: ${theme.colors.background_dark};
+        color: ${theme.colors.white};
+    }
 `
 
 const ButtonStyled = styled.button`
@@ -35,6 +40,7 @@ const ButtonStyled = styled.button`
 
 
 function AdminTabs({isShown, setIsShown, setTabSelected, tabSelected}) {
+    console.log(tabSelected);
     const handleClick = (e) => {
         // handle case if click on svg
         if(e.target.tagName == "svg") {
@@ -53,7 +59,7 @@ function AdminTabs({isShown, setIsShown, setTabSelected, tabSelected}) {
             if(e.target.id === "show") setIsShown(!isShown);
         }
         
-        console.log(isShown);
+        // console.log(isShown);
     }
 
   return (
@@ -61,9 +67,18 @@ function AdminTabs({isShown, setIsShown, setTabSelected, tabSelected}) {
      {/* pass in onClick event only the props edit,
       show or add and not a general handleClick props */}
 
-        <ButtonStyled id="show" onClick={handleClick}>{isShown ? <FiChevronDown/> : <FiChevronUp/>}</ButtonStyled>
-        <ButtonStyled id="add" onClick={handleClick}><AiOutlinePlus/> Ajouter un produit</ButtonStyled>
-        <ButtonStyled id="edit" onClick={handleClick}><MdModeEditOutline/> Modifier un produit</ButtonStyled>
+        <ButtonStyled  id="show" onClick={handleClick}>{isShown ? <FiChevronDown/> : <FiChevronUp/>}</ButtonStyled>
+        <ButtonStyled 
+            className={ tabSelected.action == "add" ? "tab-selected" : "" } 
+            id="add" onClick={handleClick}>
+                <AiOutlinePlus/> Ajouter un produit
+        </ButtonStyled>
+        <ButtonStyled 
+            className={ tabSelected.action == "edit" ? "tab-selected" : "" } 
+            id="edit" onClick={handleClick}>
+                <MdModeEditOutline/> Modifier un produit
+        </ButtonStyled>
+    
     </AdminTabsStyled>
   )
 }
