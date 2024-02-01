@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 
 const AdminPannelStyled = styled.div`
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
   position: sticky;
   /* top: auto; */
   bottom: 0;
@@ -36,8 +36,13 @@ function AdminPannel() {
 
   return (
     <AdminPannelStyled>
-        <AdminTabs isShown ={ isShown } setIsShown = { setIsShown } setTabSelected = { setTabSelected }/>
-        {isShown && <TabContent content = { tabSelected } />}
+        <AdminTabs 
+        isShown ={ isShown } setIsShown = { setIsShown } 
+        tabSelected = { tabSelected } setTabSelected = { setTabSelected }
+        />
+        {/* update this with height of pannel to 0 or 200 to transition on height */}
+        {/* {isShown && <TabContent content = { tabSelected }  />} */}
+        <TabContent content = { tabSelected }  isShown = { isShown }/>
     </AdminPannelStyled>
   )
 }
