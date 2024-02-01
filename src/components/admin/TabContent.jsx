@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { theme } from '../../utils/theme/index'
 import { GiCupcake } from "react-icons/gi";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
-import { FiCheck } from "react-icons/fi";
+import FormAlert from './FormAlert';
 
 
 
@@ -98,9 +98,21 @@ const FormFieldStyled = styled.div`
     left: 30px;
   }
 
+
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
   
 
-`
+`;
+
+
+const ButtonContainerStyled = styled.div`
+  display: flex;
+  gap: 40px;
+`;
 
 
 
@@ -117,6 +129,23 @@ function TabContent({ content, isShown , AddItemToMenu }) {
     url: "",
     price: ""
   });
+  const [showAlert, setShowAlert] = useState(false);
+
+  useEffect(() => {
+    let timeout;
+
+    if (showAlert) {
+      timeout = setTimeout(() => {
+        setShowAlert(false);
+      }, 2000);
+    }
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [showAlert]);
+
+
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -125,17 +154,17 @@ function TabContent({ content, isShown , AddItemToMenu }) {
 
 
   const handleSubmit = (e) => {
-   e.preventDefault(); 
-  //  console.log(formValues);
-   AddItemToMenu(formValues);  
-   // reset all values
-   setFormValues({
-    id: Date.now(),
-    name: "",
-    url: "",
-    price: ""
-  }) 
-   // let 
+    e.preventDefault(); 
+    //  console.log(formValues);
+    AddItemToMenu(formValues);  
+    // reset all values
+    setFormValues({
+      id: Date.now(),
+      name: "",
+      url: "",
+      price: ""
+    }) ;
+    setShowAlert(true);
   }
 
 
@@ -157,7 +186,10 @@ function TabContent({ content, isShown , AddItemToMenu }) {
               <input type="number" name="price" placeholder="Prix" value={formValues.price} onChange={handleChange}/>
               <MdOutlineEuro className='icon'/>
             </FormFieldStyled>
-            <button className='btn-submit' type='submit'>Ajouter un nouveau produit</button>
+            <ButtonContainerStyled>
+              <button className='btn-submit' type='submit'>Ajouter un nouveau produit</button>
+              {showAlert && <FormAlert className="fade-out" state = "true" /> }
+            </ButtonContainerStyled>
           </form>
         </div>
     </TabContentStyled>
