@@ -15,11 +15,7 @@ export const UserContext = createContext(null);
 function App() {
 
   const [user, setUser] = useState(null);
-  // if(user) {
-  //   useEffect(() => {
-
-  //   })
-  // }
+ 
 
   return (
     <UserContext.Provider value = {{ user, setUser }}> 
@@ -30,7 +26,7 @@ function App() {
             <Route path = "/*" element={<Error404 />}/>
           </Routes>
         </BrowserRouter>
-        <ToastContainer/>
+        <ToastContainer />
 
     </UserContext.Provider>
   )

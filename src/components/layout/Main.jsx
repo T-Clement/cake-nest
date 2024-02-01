@@ -1,23 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { theme } from '../../theme'
 import { fakeMenu } from '../../data/fakeData/fakeMenu.js'
 import { formatPrice } from '../../utils/maths.js'
-import AdminTabs from './AdminTabs.jsx'
+import AdminPannel from './admin/AdminPannel.jsx'
 
 const MainStyled = styled.main`
     flex: 1;
     box-shadow: inset gray 0px 0px 60px -12px; 
     background: ${theme.colors.background_white};
     border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
-    padding: 1rem;
+    /* padding: 1rem; */
     grid-template-columns: repeat(4, 1fr);
     /* height: 100%; */
     overflow-y: scroll;
+    position: relative;
 `;
 
 const GridListStyled = styled.ul`
-    margin: 32px;
+    margin: 42px 72px;
     display: grid;
     /* width: auto; */
     grid-template-columns: repeat(4, 1fr);
@@ -64,9 +65,11 @@ const DetailsStyled = styled.div`
 
 
 
-function Main() {
+function Main({ isAdmin }) {
     // console.log(fakeMenu);
-  return (
+    const [adminState, setAdminState] = useState({action : "add", content: {name: "", url: "", price: ""}}); // initialize when first toggle to admin mode to add tab
+    const [isShown, setIsShown] = useState(true);
+    return (
     <MainStyled>
         <GridListStyled>
             {fakeMenu.map(item => (
@@ -85,7 +88,14 @@ function Main() {
             )} 
 
         </GridListStyled>
-        {/* <AdminTabs /> */}
+        {isAdmin ? <AdminPannel 
+            adminState = { adminState } setAdminState = { setAdminState } 
+            isShown = { isShown }  setIsShown = { setIsShown }
+            /> 
+        : 
+            "" }
+        {/* div invisible qui fait la hauteur du panneau d'admin, qui est derrière le panneau admin
+        rendu conditionnel && */}
     </MainStyled>
   )
 }

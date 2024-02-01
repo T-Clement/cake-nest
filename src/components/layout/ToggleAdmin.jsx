@@ -46,7 +46,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function ToggleAdmin({ isAdmin, setIsAdmin }) {
     const handleToggle = () => {
         if(!isAdmin) {
-            toast.info('🧁 Vous êtes passés administrateur!', {
+            toast.info('🧁 Vous êtes passé administrateur!', {
                 position: "bottom-right",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -54,7 +54,7 @@ function ToggleAdmin({ isAdmin, setIsAdmin }) {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                theme: "dark",
+                theme: "light",
             });    
         }
         setIsAdmin(!isAdmin);
