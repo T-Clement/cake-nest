@@ -5,7 +5,8 @@ import { GiCupcake } from "react-icons/gi";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import FormAlert from './FormAlert';
-
+import UpdateForm from './UpdateForm';
+// import 
 
 
 const TabContentStyled = styled(({ isShown, ...rest }) => <div {...rest} />).attrs(props => ({
@@ -118,10 +119,6 @@ const ButtonContainerStyled = styled.div`
 
 
 
-
-
-
-
 function TabContent({ content, isShown , AddItemToMenu }) {
 
   // to handle multiple form field in one state
@@ -168,10 +165,11 @@ function TabContent({ content, isShown , AddItemToMenu }) {
     setShowAlert(true);
   }
 
-
+  // console.log(content.action);
   return (
     <TabContentStyled isShown = { isShown }>
-                
+        {(content.action == "add") // ADD
+        ?
         <div className='content'>
           <img className='img-preview' src={formValues.imageSource} alt="Aucune image" />
           <form onSubmit={handleSubmit}>
@@ -193,6 +191,11 @@ function TabContent({ content, isShown , AddItemToMenu }) {
             </ButtonContainerStyled>
           </form>
         </div>
+         : // UPDATE
+         <UpdateForm />
+         
+        }
+        
     </TabContentStyled>
   )
 }
