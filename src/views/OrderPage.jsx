@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import Navbar from './Navbar'
+import Navbar from '../components/Navbar'
 import styled from 'styled-components'
-import { theme } from '../../theme'
-import Main from './Main'
+import { theme } from '../utils/theme/index'
+import Main from '../components/Main'
 
 
 

@@ -1,7 +1,7 @@
 import React from 'react'
-import { theme } from './../../theme/index.js';
+import { theme } from './../utils/theme/index';
 import styled from 'styled-components';
-import Cupcake from '../../assets/images/cupcake.png';
+import Cupcake from '../assets/images/cupcake.png';
 
 
 const LogoStyled = styled.div`

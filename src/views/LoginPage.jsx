@@ -1,9 +1,9 @@
 import React from 'react';
-import Login from './Login';
+import Login from '../components/Login';
 import styled from 'styled-components';
-import {theme} from './../../theme/index.js';
-import Logo from './Logo.jsx';
-import tarts from '../../assets/images/tarts.jpg';
+import {theme} from '../utils/theme/index.js';
+import Logo from '../components/Logo.jsx';
+import tarts from '../assets/images/tarts.jpg';
 
 
 // import tarts from '../../../src/assets/tarts.jpg'

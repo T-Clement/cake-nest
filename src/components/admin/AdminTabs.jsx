@@ -3,7 +3,7 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
 import styled from 'styled-components';
-import { theme } from '../../../theme';
+import { theme } from '../../utils/theme/index';
 
 
 const AdminTabsStyled = styled.div`
@@ -18,10 +18,6 @@ const AdminTabsStyled = styled.div`
 `
 
 const ButtonStyled = styled.button`
-    /* ${({ $tabSelected }) =>
-    $tabSelected ? `display: block `: `display: block`}; */
-
-
     padding: 0.6em 1.2em;
     background-color: ${theme.colors.background_white};
     border: none;
@@ -32,15 +28,13 @@ const ButtonStyled = styled.button`
     gap: 0.8em;
     align-items: center;
     color: ${theme.colors.greyDark};
-
-
 `
 
 
 
 
 function AdminTabs({isShown, setIsShown, setTabSelected, tabSelected}) {
-    console.log(tabSelected);
+    // console.log(tabSelected);
     const handleClick = (e) => {
         // handle case if click on svg
         if(e.target.tagName == "svg") {
@@ -51,7 +45,7 @@ function AdminTabs({isShown, setIsShown, setTabSelected, tabSelected}) {
                 // setTabSelected({action: e.target.parentElement.id});
             }
         } else {
-            console.log(e.target, e.target.id);
+            // console.log(e.target, e.target.id);
             if(e.target.id !== "show") {
                 setTabSelected({action: e.target.id});
                 setIsShown(true); // open panel bt default when click on btn
@@ -68,7 +62,11 @@ function AdminTabs({isShown, setIsShown, setTabSelected, tabSelected}) {
      {/* pass in onClick event only the props edit,
       show or add and not a general handleClick props */}
 
-        <ButtonStyled  id="show" onClick={handleClick}>{isShown ? <FiChevronDown/> : <FiChevronUp/>}</ButtonStyled>
+        <ButtonStyled  
+            id="show" 
+            onClick={handleClick}>
+                {isShown ? <FiChevronDown/> : <FiChevronUp/>}
+        </ButtonStyled>
         <ButtonStyled 
             className={ tabSelected.action == "add" ? "tab-selected" : "" } 
             id="add" onClick={handleClick}>
