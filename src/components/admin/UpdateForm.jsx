@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react'
-import {editedItemContext} from "../../views/OrderPage"
+import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { theme } from '../../utils/theme';
 import { GiCupcake } from "react-icons/gi";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
+import EditedItemContext from '../../context/EditedItemContext';
 
 
 const ContentDivStyled = styled.div`
@@ -57,20 +57,21 @@ const FormFieldStyled = styled.div`
 
 function UpdateForm() {
 
-    const {editedItem, setEditedItem} = useContext(editedItemContext);
+    const {editedItem, setEditedItem} = useContext(EditedItemContext);
     // console.log(editedItem);
+    // console.log(editedItem);
+    const [formValues, setFormValues] = useState(editedItem);
 
-    const [formValues, setFormValues] = useState({
-        id: "",
-        name: "",
-        imageSource: "", // to fix the input not updating
-        price: ""
-    });
+    // console.log(formValues);
 
+    useEffect(() => {
+        setFormValues(editedItem);
+      }, [editedItem]);
 
     const handleChange = () => {
         const {name, value} = e.target;
-        setFormValues({...formValues, [name]: value});
+        setFormValues({...editedItem, [name]: value});
+        setEditedItem(formValues);
     }
 
   return (
@@ -80,9 +81,9 @@ function UpdateForm() {
         <form>
         <FormFieldStyled>
             <input 
-                type='text' name="name" placeholder='Nom du produit' 
-                value={formValues.name} onChange={handleChange}
-                disabled = {editedItem === null ? true : false} 
+                type='text' name="title" placeholder='Nom du produit' 
+                value={formValues.title} onChange={handleChange}
+                disabled = {editedItem.id === "" ? true : false} 
             />
             <GiCupcake className='icon'/>
         </FormFieldStyled>
@@ -91,7 +92,7 @@ function UpdateForm() {
                 type="text" name="imageSource" 
                 placeholder="Lien URL d'une image (ex:https://la-photo-de-mon-produit.png)" 
                 value={formValues.imageSource} onChange={handleChange}
-                disabled = {editedItem === null ? true : false}   
+                disabled = {editedItem.id === "" ? true : false}   
             />
             <BsFillCameraFill className='icon'/>
         </FormFieldStyled>
@@ -99,7 +100,7 @@ function UpdateForm() {
             <input 
                 type="number" name="price" placeholder="Prix" step="0.01" 
                 value={formValues.price} onChange={handleChange}
-                disabled = {editedItem === null ? true : false} 
+                disabled = {editedItem.id === "" ? true : false} 
             />
             <MdOutlineEuro className='icon'/>
         </FormFieldStyled>

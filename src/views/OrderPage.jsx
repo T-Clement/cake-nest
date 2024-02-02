@@ -1,8 +1,12 @@
-import React, { createContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Navbar from '../components/Navbar'
 import styled from 'styled-components'
 import { theme } from '../utils/theme/index'
 import Main from '../components/Main'
+import EditedItemContext from '../context/EditedItemContext'
+
+
+
 
 
 
@@ -24,31 +28,36 @@ const OrderPageStyled = styled.div`
   
 `
 
-export const editedItemContext = createContext(null);
 
 function OrderPage() {
-// voir Outlet
-
+  // voir Outlet
+  
   const [isAdmin, setIsAdmin] = useState(true);
-  const [editedItem, setEditedItem] = useState(null); // store edited user
-
+  const [editedItem, setEditedItem] = useState(
+    { id: "",
+      title: "",
+      imageSource: "", // to fix the input not updating
+      price: "",
+    }
+  ); // store edited user
+  
+  const EditedItemContextValue = { editedItem, setEditedItem };
   // qd click sur carte, editedItem devient l'item séléctionné
   // qd tu changes, met à jour, 
   // qd tu cliques sur le bouton et que user pas séléctionné, bloquer les champs en disabled,
     // puis quand séléctionné, activer les champs
   // mettre à jour directement dans l'objet menu l'objet séléctionné
 
-  
 
   return (
-    <editedItemContext.Provider value = {{editedItem, setEditedItem}}>
+    <EditedItemContext.Provider value = {EditedItemContextValue}>
       <OrderPageStyled>
         <div className='container'>
           <Navbar isAdmin={ isAdmin } setIsAdmin={ setIsAdmin }/>
           <Main isAdmin = {isAdmin} />
         </div>        
       </OrderPageStyled>
-    </editedItemContext.Provider>
+    </EditedItemContext.Provider>
   )
 }
 

@@ -9,7 +9,7 @@ import { TiDelete } from "react-icons/ti";
 import ImageMissing from "./../assets/images/no-image.jpg";
 import MenuEmpty from './MenuEmpty.jsx'
 import AdminMenuEmpty from './admin/AdminMenuEmpty.jsx'
-import { editedItemContext } from '../views/OrderPage.jsx'
+import EditedItemContext from '../context/EditedItemContext.jsx'
  
 const MainStyled = styled.main`
     flex: 1;
@@ -150,8 +150,8 @@ function Main({ isAdmin }) {
     const [adminState, setAdminState] = useState({action : "edit", content: {name: "", imageSource: "", price: ""}}); // initialize when first toggle to admin mode to add tab
     const [isShown, setIsShown] = useState(true);
     const [menu, setMenu] = useState(fakeMenu);
-
-    const { editedItem, setEditedItem } = useContext(editedItemContext);
+    
+    const { editedItem, setEditedItem } = useContext(EditedItemContext);
 
     const handleDelete = (id) => {
         const menuCopy = menu.filter((item) => id != item.id);
@@ -160,7 +160,9 @@ function Main({ isAdmin }) {
 
 
     const handleEdit = (item) => {
+        // console.log(item);
         setEditedItem(item);
+        console.error(editedItem);
     }
 
     const AddItemToMenu = (newItemMenu) => {
