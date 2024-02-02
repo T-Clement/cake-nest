@@ -82,7 +82,7 @@ function UpdateForm() {
             <input 
                 type='text' name="name" placeholder='Nom du produit' 
                 value={formValues.name} onChange={handleChange}
-                disabled = {editedItem != null ? "true" : "false"} 
+                disabled = {editedItem === null ? true : false} 
             />
             <GiCupcake className='icon'/>
         </FormFieldStyled>
@@ -91,7 +91,7 @@ function UpdateForm() {
                 type="text" name="imageSource" 
                 placeholder="Lien URL d'une image (ex:https://la-photo-de-mon-produit.png)" 
                 value={formValues.imageSource} onChange={handleChange}
-                disabled = {editedItem != null ? "true" : "false"}   
+                disabled = {editedItem === null ? true : false}   
             />
             <BsFillCameraFill className='icon'/>
         </FormFieldStyled>
@@ -99,11 +99,11 @@ function UpdateForm() {
             <input 
                 type="number" name="price" placeholder="Prix" step="0.01" 
                 value={formValues.price} onChange={handleChange}
-                disabled = {editedItem != null ? "true" : "false"} 
+                disabled = {editedItem === null ? true : false} 
             />
             <MdOutlineEuro className='icon'/>
         </FormFieldStyled>
-            <p className='message'>Veuillez séléctionner une carte pour la modifier</p>
+            <p className='message'>Veuillez séléctionner un produit pour le modifier</p>
         </form>
     </ContentDivStyled>
   )

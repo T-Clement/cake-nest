@@ -29,7 +29,7 @@ export const editedItemContext = createContext(null);
 function OrderPage() {
 // voir Outlet
 
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
   const [editedItem, setEditedItem] = useState(null); // store edited user
 
   // qd click sur carte, editedItem devient l'item séléctionné

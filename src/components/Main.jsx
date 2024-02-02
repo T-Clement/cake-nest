@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import { theme } from '../utils/theme/index.js'
 import { fakeMenu } from '../utils/data/fakeMenu.js'
@@ -9,6 +9,7 @@ import { TiDelete } from "react-icons/ti";
 import ImageMissing from "./../assets/images/no-image.jpg";
 import MenuEmpty from './MenuEmpty.jsx'
 import AdminMenuEmpty from './admin/AdminMenuEmpty.jsx'
+import { editedItemContext } from '../views/OrderPage.jsx'
  
 const MainStyled = styled.main`
     flex: 1;
@@ -63,6 +64,54 @@ const ArticleStyled = styled.article`
         cursor: pointer;
     }
     
+    .edit-btn {
+        display: none;
+    }
+
+    article {
+        transition: all 500ms ease-in-out;
+    }
+
+    article&:hover {
+        /* border: 2px solid red; */
+        scale: 1.05;
+    }
+
+    article&:hover .edit-btn {
+        display: block;
+        position: absolute;
+        color: ${theme.colors.white};
+        background-color: ${theme.colors.primary};
+        padding: 2px;
+        aspect-ratio: 1/1;
+        border-radius: ${theme.borderRadius.extraRound};
+        top: 12px;
+        left: 12px;
+        /* background-color: transparent; */
+        border: none;
+        margin: 0;
+        cursor: pointer;
+        transition: all 500ms ease-in-out;
+    }
+
+    article&:not(&:hover) {
+        scale: 1.0;
+    }
+    /* article:hover .edit-btn {
+        display: block;
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        transition: all 500ms ease-in-out
+    } */
+
+
+
     svg {
         /* background-color: ${theme.colors.white};  */
         color: ${theme.colors.primary};
@@ -97,15 +146,22 @@ const DetailsStyled = styled.div`
 
 function Main({ isAdmin }) {
     // console.log(fakeMenu);
-    const [adminState, setAdminState] = useState({action : "add", content: {name: "", imageSource: "", price: ""}}); // initialize when first toggle to admin mode to add tab
+    // const [adminState, setAdminState] = useState({action : "add", content: {name: "", imageSource: "", price: ""}}); // initialize when first toggle to admin mode to add tab
+    const [adminState, setAdminState] = useState({action : "edit", content: {name: "", imageSource: "", price: ""}}); // initialize when first toggle to admin mode to add tab
     const [isShown, setIsShown] = useState(true);
-    const [menu, setMenu] = useState(fakeMenu)
+    const [menu, setMenu] = useState(fakeMenu);
+
+    const { editedItem, setEditedItem } = useContext(editedItemContext);
 
     const handleDelete = (id) => {
         const menuCopy = menu.filter((item) => id != item.id);
         setMenu(menuCopy);
     }
 
+
+    const handleEdit = (item) => {
+        setEditedItem(item);
+    }
 
     const AddItemToMenu = (newItemMenu) => {
         const menuCopy = [...menu, newItemMenu];
@@ -136,13 +192,23 @@ function Main({ isAdmin }) {
                     <ArticleStyled>
                         <img src={item.imageSource} onError={handleImgError} alt="Photo de Cupcake" /> {/*use onerror / onError if image not found to display another img */}
 
-                        {isAdmin ?<button id = {item.id} className='delete-btn' onClick={() => handleDelete(item.id)}><TiDelete className="icon"/></button> : ""}
+                        {isAdmin ? 
+                        <button id = {item.id} className='delete-btn' onClick={() => handleDelete(item.id)}>
+                            <TiDelete className="icon"/>
+                        </button> : ""
+                        }
+
+
+                        {isAdmin && 
+                        <button className='edit-btn' onClick={() => handleEdit(item)}>✎</button>
+                        }
 
                         <h4>{item.title}</h4>
                         <DetailsStyled>
                             <p className='price'>{formatPrice(item.price)}</p>
                             <button className='btn'>Ajouter</button>
                         </DetailsStyled>
+                        
                     </ArticleStyled>
                 </li>
                 )
