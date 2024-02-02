@@ -2,12 +2,19 @@ import React, { useState } from 'react'
 import AdminTabs from './AdminTabs';
 import TabContent from './TabContent';
 import styled from 'styled-components';
+import { theme } from '../../utils/theme';
 
 
 const AdminPannelStyled = styled.div`
   
   position: sticky;
   bottom: 0;
+  /* position: fixed;
+  width: 100%;
+  bottom: 24px; */
+  /* height: auto; */
+  /* border-radius: 0 0 ${theme.borderRadius.round}; */
+
 `;
 
 

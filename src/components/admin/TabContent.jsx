@@ -19,11 +19,13 @@ const TabContentStyled = styled(({ isShown, ...rest }) => <div {...rest} />).att
   /* inset 0px -2px 3px 0px #1D13A3,  */
   0px -2px 0px 0px ${theme.colors.greyLight};
   margin-top: -1px;
+  border-radius: 0 0 ${theme.borderRadius.round};
+
 
   // conditionnal rendering with styled compenents via the props passed to the style container component
   height: ${props => 
     props.isShown ? 
-      '250px' : '0px'
+      '25vh' : '0vh'
   };
   overflow: hidden; // to hide the content who is overflowing
   transition: height 500ms ease-in-out;

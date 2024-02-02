@@ -7,6 +7,8 @@ import AdminPannel from './admin/AdminPannel.jsx'
 
 import { TiDelete } from "react-icons/ti";
 import ImageMissing from "./../assets/images/no-image.jpg";
+import MenuEmpty from './MenuEmpty.jsx'
+import AdminMenuEmpty from './admin/AdminMenuEmpty.jsx'
  
 const MainStyled = styled.main`
     flex: 1;
@@ -23,6 +25,7 @@ const MainStyled = styled.main`
 const GridListStyled = styled.ul`
     margin: 42px 72px;
     display: grid;
+    /* height: 100%; */
     /* width: auto; */
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 60px 40px;
@@ -121,8 +124,14 @@ function Main({ isAdmin }) {
     return (
     <MainStyled>
         <GridListStyled>
-            {menu.map((item) => (
-            <li key={ item.id }>
+
+            {(menu.length <= 0) ? // rendering menu or empty menu components if no menu items left
+                ((isAdmin) ? // rendering user empty menu or admin empty menu
+                    <AdminMenuEmpty defaultMenu = {fakeMenu} setMenu = {setMenu} /> 
+                    : 
+                    <MenuEmpty />) 
+            :  menu.map((item) => ( // rendering menu
+                <li key={ item.id }>
                 
                     <ArticleStyled>
                         <img src={item.imageSource} onError={handleImgError} alt="Photo de Cupcake" /> {/*use onerror / onError if image not found to display another img */}
@@ -136,7 +145,7 @@ function Main({ isAdmin }) {
                         </DetailsStyled>
                     </ArticleStyled>
                 </li>
-            )
+                )
             )} 
 
         </GridListStyled>
