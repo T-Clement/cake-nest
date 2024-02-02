@@ -128,7 +128,7 @@ function TabContent({ content, isShown , AddItemToMenu }) {
   const [formValues, setFormValues] = useState({
     id: Date.now(),
     name: "",
-    url: "",
+    imageSource: "", // to fix the input not updating
     price: ""
   });
   const [showAlert, setShowAlert] = useState(false);
@@ -163,7 +163,7 @@ function TabContent({ content, isShown , AddItemToMenu }) {
     setFormValues({
       id: Date.now(),
       name: "",
-      url: "",
+      imageSource: "",
       price: ""
     }) ;
     setShowAlert(true);
@@ -174,14 +174,14 @@ function TabContent({ content, isShown , AddItemToMenu }) {
     <TabContentStyled isShown = { isShown }>
         {/* <p>TabContent : {content.action}</p> */}
         <div className='content'>
-          <img className='img-preview' src="" alt="Aucune image" />
+          <img className='img-preview' src={formValues.imageSource} alt="Aucune image" />
           <form onSubmit={handleSubmit}>
             <FormFieldStyled>
               <input type='text' name="name" placeholder='Nom du produit' value={formValues.name} onChange={handleChange}/>
               <GiCupcake className='icon'/>
             </FormFieldStyled>
             <FormFieldStyled>
-              <input type="text" name="url" placeholder="Lien URL d'une image (ex:https://la-photo-de-mon-produit.png)" value={formValues.url} onChange={handleChange}/>
+              <input type="text" name="imageSource" placeholder="Lien URL d'une image (ex:https://la-photo-de-mon-produit.png)" value={formValues.imageSource} onChange={handleChange}/>
               <BsFillCameraFill className='icon'/>
             </FormFieldStyled>
             <FormFieldStyled>
