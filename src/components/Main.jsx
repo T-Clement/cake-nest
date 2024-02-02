@@ -97,7 +97,7 @@ const DetailsStyled = styled.div`
 
 function Main({ isAdmin }) {
     // console.log(fakeMenu);
-    const [adminState, setAdminState] = useState({action : "add", content: {name: "", url: "", price: ""}}); // initialize when first toggle to admin mode to add tab
+    const [adminState, setAdminState] = useState({action : "add", content: {name: "", imageSource: "", price: ""}}); // initialize when first toggle to admin mode to add tab
     const [isShown, setIsShown] = useState(true);
     const [menu, setMenu] = useState(fakeMenu)
 

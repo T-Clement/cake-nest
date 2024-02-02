@@ -133,7 +133,7 @@ function TabContent({ content, isShown , AddItemToMenu }) {
   });
   const [showAlert, setShowAlert] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => { // to remove after 2 seconds the notification
     let timeout;
 
     if (showAlert) {
@@ -157,7 +157,6 @@ function TabContent({ content, isShown , AddItemToMenu }) {
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
-    //  console.log(formValues);
     AddItemToMenu(formValues);  
     // reset all values
     setFormValues({
@@ -172,7 +171,7 @@ function TabContent({ content, isShown , AddItemToMenu }) {
 
   return (
     <TabContentStyled isShown = { isShown }>
-        {/* <p>TabContent : {content.action}</p> */}
+                
         <div className='content'>
           <img className='img-preview' src={formValues.imageSource} alt="Aucune image" />
           <form onSubmit={handleSubmit}>
@@ -185,7 +184,7 @@ function TabContent({ content, isShown , AddItemToMenu }) {
               <BsFillCameraFill className='icon'/>
             </FormFieldStyled>
             <FormFieldStyled>
-              <input type="number" name="price" placeholder="Prix" value={formValues.price} onChange={handleChange}/>
+              <input type="number" name="price" placeholder="Prix" step="0.01" value={formValues.price} onChange={handleChange}/>
               <MdOutlineEuro className='icon'/>
             </FormFieldStyled>
             <ButtonContainerStyled>
