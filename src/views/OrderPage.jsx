@@ -4,35 +4,27 @@ import styled from 'styled-components'
 import { theme } from '../utils/theme/index'
 import Main from '../components/Main'
 import EditedItemContext from '../context/EditedItemContext'
+import { useLoaderData, useOutletContext } from 'react-router-dom'
 
 
 
 
+// loader + fetch pour récupérer le isAdmin
 
 
-const OrderPageStyled = styled.div`
-  height: 100vh;
-  background: ${theme.colors.primary};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .container {
-    height: 95vh;
-    display: flex;
-    width: 1400px;
-    flex-direction: column;
-    margin: 1em;
-  }
-
-  
-`
 
 
-function OrderPage() {
+function OrderPage({}) {
   // voir Outlet
+
+  const cupcakes = useLoaderData();
+  // console.warn(cupcakes);
+
+  const [isAdmin] =  useOutletContext(); 
+
+  // console.log("log du isAdmin");
+  // console.log(isAdmin);
   
-  const [isAdmin, setIsAdmin] = useState(true);
   const [editedItem, setEditedItem] = useState(
     { id: "",
       title: "",
@@ -51,12 +43,7 @@ function OrderPage() {
 
   return (
     <EditedItemContext.Provider value = {EditedItemContextValue}>
-      <OrderPageStyled>
-        <div className='container'>
-          <Navbar isAdmin={ isAdmin } setIsAdmin={ setIsAdmin }/>
-          <Main isAdmin = {isAdmin} />
-        </div>        
-      </OrderPageStyled>
+      <Main isAdmin = {isAdmin} cupcakes = {cupcakes}/>
     </EditedItemContext.Provider>
   )
 }

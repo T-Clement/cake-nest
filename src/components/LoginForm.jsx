@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react'
-import { useNavigate  } from "react-router-dom";
+import { Form, useNavigate  } from "react-router-dom";
 import styled from 'styled-components';
 import { theme } from '../utils/theme/index';
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { UserContext } from '../App';
+import apiAxios from '../../libs/axios';
 
 
 
@@ -77,32 +78,45 @@ const LoginStyled = styled.div`
 
 
 
-function Login( ) {
+function LoginForm( ) {
     const {user, setUser } = useContext(UserContext);
-    const  [username, setUsername] = useState("");
+    const  [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const navigate = useNavigate ();
 
     
 
     const handleChange = (e) => {
-        setUsername(e.target.value);
+        if(e.target.name == "password") {
+            setPassword(e.target.value);
+
+        }
+        if(e.target.name == "email") {
+            setEmail(e.target.value);
+
+        }
+
     }
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Le formulaire est soumis")
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log("Le formulaire est soumis")
 
-        // use setUser comming from Context
-        setUser(username);
+    //     apiAxios.
 
 
-        setUsername("");
+    //     // use setUser comming from Context
+    //     setUser("test");
 
-        // username
-        navigate(`/orderpage`);
+
+    //     setPassword("");
+    //     setEmail("");
+
+    //     // username
+    //     navigate(`/orderpage`);
         
-    }
+    // }
 
 
   return (
@@ -111,13 +125,14 @@ function Login( ) {
         <hr/>
         <section>
             <h2 className="ttl sub-ttl">Connectez-vous</h2>
-            <form onSubmit={ handleSubmit }>
+            <Form method='post' action="/login">
+            {/* <Form method='post' action="/login" onSubmit={ handleSubmit }> */}
                 <div>
                     <input 
-                        type="text" 
-                        name='username' 
-                        value = {username} 
-                        placeholder='Entrez votre prénom' 
+                        type="email" 
+                        name='email' 
+                        value = {email} 
+                        placeholder='Entrez votre email' 
                         onChange = { handleChange }
                         autoComplete = "off" 
                         className='form-element username-field'
@@ -126,14 +141,17 @@ function Login( ) {
                     <IoPersonCircleOutline className='icon'/>
                     {/* <IoPersonCircleOutline /> */}
                 </div>
+                <div>
+                    <input type="password" name="password" value={password} onChange={(handleChange)} className='form-element username-field' placeholder='Entrez votre mot de passe' required/>
+                </div>
                 <button className='form-element btn' type='submit'>Mon espace</button>
-            </form>
+            </Form>
 
         </section>
     </LoginStyled>
   )
 }
 
-export default Login
+export default LoginForm
 
 

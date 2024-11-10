@@ -5,23 +5,46 @@ import styled from "styled-components"
 import { theme } from "../utils/theme/index";
 import { UserContext } from "../App";
 import { useContext } from "react";
+import apiAxios from "../../libs/axios";
 
 
-export default function Profile() {
-  const {user} = useContext(UserContext);
-  // const {username} = useParams();
-  // const navigate = useNavigate ();
+export default function Profile({user, setUser}) {
+  console.log("Dans profil", user);
+  const navigate = useNavigate ();
+
+
+
+  // handle logout
+  const handleLogout = async () => {
+    try {
+      // delete cookies and token
+      await apiAxios.post("/logout"); 
+
+
+      localStorage.removeItem("user");
+
+      // delete user from context
+      setUser(null);
+
+
+      // redirect to login
+      navigate("/login");
+    } catch (error) {
+      console.error("Erreur lors de la déconnexion:", error);
+    }
+  };
+
+
+
   return (
     <ProfileStyled>
       <div className="info">
         <p>
-          Salut <b>{user}</b>
+          Salut <b>{user.name}</b>
         </p>
-        <Link to="/">
-          <div className="description">
-            <small>Se déconnecter</small>
-          </div>
-        </Link>
+        <div className="description" onClick={handleLogout}>
+          <small>Se déconnecter</small>
+        </div>
       </div>
       <div className="picture">
         <BsPersonCircle />

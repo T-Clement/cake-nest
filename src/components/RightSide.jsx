@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import ToggleAdmin from './ToggleAdmin'
 import Profile from './Profile'
+import { UserContext } from '../App'
 
 
 const RightSideStyled = styled.div`
@@ -15,11 +16,12 @@ const RightSideStyled = styled.div`
 
 
 function RightSide ({ isAdmin, setIsAdmin }) {
+  const {user, setUser} = useContext(UserContext);
     
     return (
         <RightSideStyled>
-            <ToggleAdmin  isAdmin = { isAdmin } setIsAdmin = { setIsAdmin }/>
-            <Profile />
+            {user.is_admin ? <ToggleAdmin  isAdmin = { isAdmin } setIsAdmin = { setIsAdmin }/> : ""}
+            <Profile user={user} setUser={setUser}/>
         </RightSideStyled>
     )
 }

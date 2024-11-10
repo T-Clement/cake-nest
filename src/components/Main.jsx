@@ -144,13 +144,19 @@ const DetailsStyled = styled.div`
 // --------------------------------------------
 // --------------------------------------------
 
-function Main({ isAdmin }) {
+function Main({ isAdmin, cupcakes }) {
     // console.log(fakeMenu);
     // const [adminState, setAdminState] = useState({action : "add", content: {name: "", imageSource: "", price: ""}}); // initialize when first toggle to admin mode to add tab
     const [adminState, setAdminState] = useState({action : "edit", content: {name: "", imageSource: "", price: ""}}); // initialize when first toggle to admin mode to add tab
-    const [isShown, setIsShown] = useState(true);
-    const [menu, setMenu] = useState(fakeMenu);
+    const [isShown, setIsShown] = useState(false);
     
+    
+    const [menu, setMenu] = useState(cupcakes);
+    
+
+    
+
+
     const { editedItem, setEditedItem } = useContext(EditedItemContext);
 
     const handleDelete = (id) => {
@@ -192,7 +198,7 @@ function Main({ isAdmin }) {
                 <li key={ item.id }>
                 
                     <ArticleStyled>
-                        <img src={item.imageSource} onError={handleImgError} alt="Photo de Cupcake" /> {/*use onerror / onError if image not found to display another img */}
+                        <img src={item.photo_url} onError={handleImgError} alt="Photo de Cupcake" /> {/*use onerror / onError if image not found to display another img */}
 
                         {isAdmin ? 
                         <button id = {item.id} className='delete-btn' onClick={() => handleDelete(item.id)}>
@@ -205,9 +211,9 @@ function Main({ isAdmin }) {
                         <button className='edit-btn' onClick={() => handleEdit(item)}>✎</button>
                         }
 
-                        <h4>{item.title}</h4>
+                        <h4>{item.name}</h4>
                         <DetailsStyled>
-                            <p className='price'>{formatPrice(item.price)}</p>
+                            <p className='price'>{formatPrice(item.price_in_cents)}</p>
                             <button className='btn'>Ajouter</button>
                         </DetailsStyled>
                         

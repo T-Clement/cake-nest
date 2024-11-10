@@ -1,9 +1,12 @@
-import React from 'react';
-import Login from '../components/Login';
+import React, { useEffect } from 'react';
+import LoginForm from '../components/LoginForm';
 import styled from 'styled-components';
 import {theme} from '../utils/theme/index.js';
 import Logo from '../components/Logo.jsx';
 import tarts from '../assets/images/tarts.jpg';
+import apiAxios from '../../libs/axios.js';
+import { useActionData, useNavigate } from 'react-router-dom';
+import { useUser } from '../hooks/useUser.jsx';
 
 
 // import tarts from '../../../src/assets/tarts.jpg'
@@ -50,14 +53,34 @@ const LoginPageStyled = styled.div`
 
 `;
 
+// function action () {
+//     const response = apiAxios.post("/login");
+//     console.log(response);
+// }
+
+
 function LoginPage({onSubmit}) {
+    // const navigate = useNavigate();
+    // const actionData = useActionData()
+    // const {setUser} = useUser(); // or Context
+    // console.log("Action Data", actionData);
+
+    // useEffect(() => {
+    //     if (actionData) {
+    //         // Si l'utilisateur est récupéré avec succès, met à jour l'état et redirige
+    //         setUser(actionData);
+    //         localStorage.setItem('user', JSON.stringify(actionData));
+    //         navigate("/orderpage");
+    //     }
+    // }, [actionData, setUser, navigate]);
+
 
 
 
   return (
     <LoginPageStyled>
         <Logo />
-        <Login onSubmit={ onSubmit }/>
+        <LoginForm onSubmit={ onSubmit }/>
     </LoginPageStyled>
   )
 }
